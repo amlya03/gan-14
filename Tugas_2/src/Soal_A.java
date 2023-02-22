@@ -17,7 +17,7 @@ public class Soal_A {
 			{
 				System.out.print("*");
 			}
-			System.out.println("*");
+			System.out.println();
 		}
 		
 	}
