@@ -1,2 +1,1 @@
-Prodemy
-Gen 14
+# Prodemy Gen 14
