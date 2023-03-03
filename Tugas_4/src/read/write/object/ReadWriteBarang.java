@@ -25,8 +25,8 @@ public class ReadWriteBarang {
         Barang b4 = new Barang("Aqua", 3000, 5);
 	
 		
-		try {
-			//Creating file
+	try {
+	    // Creating file
             File file = new File("file.txt");
             if (file.createNewFile()) {
                 System.out.println("File created!");
