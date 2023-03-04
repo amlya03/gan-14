@@ -26,7 +26,7 @@ public class ReadWriteBarang {
 	
 		
 		try {
-			//Creating file
+			// Creating file
             File file = new File("file.txt");
             if (file.createNewFile()) {
                 System.out.println("File created!");
@@ -47,7 +47,7 @@ public class ReadWriteBarang {
 			f.close();
 			
 			// Print objects to file
-			FileInputStream fi = new FileInputStream(new File("myObjects.txt"));
+			FileInputStream fi = new FileInputStream(file);
 			ObjectInputStream oi = new ObjectInputStream(fi);
 
 			// Read objects from file
