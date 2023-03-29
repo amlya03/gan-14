@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<!-- jQuery Modal -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+<script type="text/javascript" th:src="@{/js/actions.js}"></script>
+<style>
+	.modal p { margin: 1em 0; }
+	
+	.add_form.modal {
+	  border-radius: 0;
+	  line-height: 18px;
+	  padding: 0;
+	  font-family: "Lucida Grande", Verdana, sans-serif;
+	}
+
+	.add_form.modal p { padding: 20px 30px; border-bottom: 1px solid #ddd; margin: 0;
+	  background: -webkit-gradient(linear,left bottom,left top,color-stop(0, #eee),color-stop(1, #fff));
+	  overflow: hidden;
+	}
+	.add_form.modal p:last-child { border: none; }
+	.add_form.modal p label { float: left; font-weight: bold; color: #333; font-size: 13px; width: 110px; line-height: 22px; }
+	.add_form.modal p input[type="text"],
+	.add_form.modal p input[type="submit"]		{
+	  font: normal 12px/18px "Lucida Grande", Verdana;
+	  padding: 3px;
+	  border: 1px solid #ddd;
+	  width: 200px;
+	}
+	
+	#msg {
+	  margin: 10px;
+	  padding: 30px;
+	  color: #fff;
+	  font-size: 18px;
+	  font-weight: bold;
+	  background: -moz-linear-gradient(top, #2e5764, #1e3d47);
+	  background: -webkit-gradient(linear,left bottom,left top,color-stop(0, #1e3d47),color-stop(1, #2e5764));
+	}
+</style>
+<body>
+	<header>
+		<nav class="navbar navbar-dark"
+			style="background-color: rgb(20, 77, 133);">
+			<h1 class="navbar-brand">Customer Management System</h1>
+			<form th:action="@{/search}" method="GET" class="d-flex">
+				<input class="form-control me-2" type="text" name="keyword"
+					autocomplete="off" placeholder="Search" aria-label="Search">
+				<button class="btn btn-outline-success" type="submit">Search</button>
+			</form>
+		</nav>
+	</header>
+	<br>
+	<div class="row">
+		<div class="container">
+			<h3 class="text-center">Customer List</h3>
+			<hr>
+			<div class="container text-right">
+				<a href="#add" rel="modal:open" class="btn btn-success">Add New
+					Customer</a>
+			</div>
+			<br>
+			<table class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Name</th>
+						<th>Email</th>
+						<th>Address</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<form id="add" action="#" class="add_form modal" style="display:none;">
+		<div id='msg'/>
+		<h3>Add a New Company</h3>
+		<br>
+			<div class="form-group">
+				<label>Name</label>
+				<input type="text" id="name" name="name" required='required'>
+			</div>
+			<div class="form-group">
+				<label>Email</label>
+				<input type="text" id="email" name="email" required='required'>
+			</div>
+				<div class="form-group">
+				<label>Address</label> 
+				<input type="text" id="address" name="address" required='required'>
+			</div>
+
+			<button type="submit" id="addNew" class="btn btn-success">Submit</button>
+			<a th:href="@{/list}"><button type="button" class="btn btn-secondary">Cancel</button></a>
+
+	</form>
+</body>
+</html>

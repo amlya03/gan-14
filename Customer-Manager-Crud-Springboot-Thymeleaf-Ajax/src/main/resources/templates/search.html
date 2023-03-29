@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Search Result</title>
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+</head>
+<body>
+	<header>
+		<nav class="navbar navbar-dark"
+			style="background-color: rgb(20, 77, 133);">
+			<div class="container-fluid">
+				<h1 class="navbar-brand">Customer Management System</h1>
+				<form class="d-flex" method="GET" action="search">
+					<input class="form-control me-2" type="text" name="keyword" autocomplete="off" 
+						placeholder="Search" aria-label="Search">
+					<button class="btn btn-outline-success" type="submit">Search</button>
+				</form>
+			</div>
+		</nav>
+	</header>
+	<br>
+	<div class="row">
+		<div class="container">
+			<h3 class="text-center">Search List</h3>
+			<table class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Name</th>
+						<th>E-mail</th>
+						<th>Address</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="customer : ${listCustomers}">
+						<td th:text="${customer.id}"></td>
+						<td th:text="${customer.name}"></td>
+						<td th:text="${customer.email}"></td>
+						<td th:text="${customer.address}"></td>
+						<td><a th:href="@{/editCustomerForm/{id}(id=${customer.id})}" class="badge text-bg-warning" style="color: green">Edit</a>
+							&nbsp;&nbsp;&nbsp; 
+							<a th:href="@{/deleteCustomer/{id}(id=${customer.id})}" class="badge text-bg-danger" style="color: red"
+							onclick="javascript: return confirm('Are you sure you want to delete this record?');">Delete</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>
